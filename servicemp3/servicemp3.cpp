@@ -2925,6 +2925,7 @@ RESULT eServiceMP3::getCachedSubtitle(struct SubtitleTrack &track)
 		track.pid = m_cachedSubtitleStream + 1;
 		track.page_number = int(m_subtitleStreams[m_cachedSubtitleStream].type);
 		track.magazine_number = 0;
+		track.language_code = m_subtitleStreams[m_cachedSubtitleStream].language_code;
 		return 0;
 	}
 	return -1;
@@ -2933,7 +2934,7 @@ RESULT eServiceMP3::getCachedSubtitle(struct SubtitleTrack &track)
 RESULT eServiceMP3::getSubtitleList(std::vector<struct SubtitleTrack> &subtitlelist)
 {
 // 	eDebug("[eServiceMP3] getSubtitleList");
-	int stream_idx = 0;
+	int stream_idx = 1;
 
 	for (std::vector<subtitleStream>::iterator IterSubtitleStream(m_subtitleStreams.begin()); IterSubtitleStream != m_subtitleStreams.end(); ++IterSubtitleStream)
 	{
