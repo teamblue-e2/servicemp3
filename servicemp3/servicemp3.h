@@ -222,6 +222,18 @@ public:
 			:pad(0), type(atUnknown)
 		{
 		}
+
+		bool operator == (const audioStream& rhs)
+		{
+			audioStream lhs = *this;
+			return (lhs.type == rhs.type) && (lhs.language_code == rhs.language_code) && (lhs.codec == rhs.codec);
+		}
+
+		bool operator != (const audioStream& rhs)
+		{
+			audioStream lhs = *this;
+			return !(lhs == rhs);
+		}
 	};
 	struct subtitleStream
 	{
@@ -231,6 +243,17 @@ public:
 		subtitleStream()
 			:pad(0)
 		{
+		}
+		bool operator == (const subtitleStream& rhs)
+		{
+			subtitleStream lhs = *this;
+			return (lhs.type == rhs.type) && (lhs.language_code == rhs.language_code);
+		}
+
+		bool operator != (const subtitleStream& rhs)
+		{
+			subtitleStream lhs = *this;
+			return !(lhs == rhs);
 		}
 	};
 	struct sourceStream
